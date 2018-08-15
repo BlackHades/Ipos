@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "Sales Management";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section styles{
+    <link href="~/Content/plugins/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css" rel="stylesheet" />
+    <link href="~/Content/plugins/jquery-ui/jquery-ui.css" rel="stylesheet" />
+    <link href="~/Content/angular-block-ui.css" rel="stylesheet" />
+}
+<div class="content">
+    <div class="container">
+        <!-- Page-Title -->
+        <div class="row">
+            <div class="col-sm-12">
+                <h4 class="page-title">Sales Management</h4>
+                <p class="text-muted page-title-alt">View sales history, pending post and print sales report</p>
+            </div>
+        </div>
+        <div class="row">
+            <div ui-view autoscroll="false">
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/Content/plugins/select2/select2.min.js"></script>
+    <script src="~/Content/plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+    <script src="~/Content/plugins/jquery-ui/jquery-ui.min.js"></script>
+    <script src="~/Scripts/jQuery.fileDowload.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/App/transaction/transaction.config.js"></script>
+    <script src="~/App/transaction/transactionCtrl.js"></script>
+    <script src="~/Scripts/angular-block-ui.js"></script>
+}

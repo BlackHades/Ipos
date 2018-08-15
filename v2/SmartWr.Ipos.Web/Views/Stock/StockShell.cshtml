@@ -1,0 +1,37 @@
+﻿@{
+    ViewBag.Title = "Stock Management";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section styles{
+    <link href="~/Content/plugins/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css" rel="stylesheet" />
+    <link href="~/Content/plugins/jquery-ui/jquery-ui.css" rel="stylesheet" />
+    @*<link href="~/Content/plugins/bootstrap-tagsinput/src/bootstrap-tagsinput.css" rel="stylesheet" />*@
+    @*<link href="~/Content/plugins/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.css" rel="stylesheet" />*@
+}
+<div class="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h4 class="page-title">Stock Management</h4>
+                <p class="text-muted page-title-alt">Perform stock related activities here i.e. listing, edit, delete stocks.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div ui-view>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/App/stock/stock.config.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/App/stock/stockCtrl.js"></script>
+    <script src="~/Content/plugins/jquery-ui/jquery-ui.min.js"></script>
+    <script src="~/Scripts/jQuery.fileDowload.js"></script>
+    @*<script src="~/Content/plugins/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js"></script>*@
+
+    @*<script src="~/Content/plugins/bootstrap-tagsinput/src/bootstrap-tagsinput.js"></script>*@
+    @*<script src="~/Content/plugins/bootstrap-inputmask/bootstrap-inputmask.min.js"></script>*@
+}

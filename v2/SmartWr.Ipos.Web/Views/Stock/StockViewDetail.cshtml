@@ -1,0 +1,232 @@
+﻿@{
+    Layout = null;
+}
+
+<style>
+        
+     .block-ui-overlay {
+        background-color: rgba(98, 95, 95, 0.62)
+    }
+
+    </style>
+
+<div class="container" ng-init="getProdItem('@Url.Content("~/api/stockapi/getproditems?id=")')">
+    <div class="content">
+        <div class="card-box">
+            <div class="row">
+                <div class="col-md-12">
+
+                    <h3 class="m-t-0 header-title"><span><i class="fa fa-list-alt"></i> Stock Details</span></h3>
+                    <div block-ui="stockEditBlockUI">
+                        <form class="form-horizontal">
+                            <div class="row m-b-30">
+                                <div class="col-md-6">
+
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label" for="productName"> Name</label>
+                                        <div class="col-md-9">
+                                            <input type="text" id="productName" class="form-control" disabled="" ng-model="productItemLog.name">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label" for="description">Description</label>
+                                        <div class="col-md-9">
+                                            <textarea id="description" class="form-control" rows="3" disabled="" ng-model="productItemLog.description"> </textarea>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label" for="price">Cost Price</label>
+                                        <div class="col-md-9">
+                                            <input type="text" id="costPrice" class="form-control" disabled="" ng-model="productItemLog.costPrice" name="costPrice">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label" for="sellingPrice"> Selling Price</label>
+                                        <div class="col-md-9">
+                                            <input type="text" id="sellPrice" class="form-control" disabled="" ng-model="productItemLog.sellPrice" name="sellPrice">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label" for="quantity">Quantity</label>
+                                        <div class="col-md-9">
+                                            <input type="text" class="form-control" ng-model="productItemLog.quantity" id="quantity" disabled="" name="quantity">
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-sm-offset-3 col-sm-9">
+                                        <div class="checkbox checkbox-primary">
+                                            <input type="checkbox" id="isDiscountable" name="isDiscountable" disabled="" ng-model="productItemLog.isDiscountable">
+                                            <label for="isDiscountable">
+                                                Discountable
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label" for="category">Category</label>
+                                        <div class="col-md-9">
+                                            @Html.DropDownList("category", ViewBag.Category as IEnumerable<SelectListItem>, "SELECT A CATEGORY", new { @class = "form-control", disabled = "", ng_model = "productItemLog.category", convert_to_number = "" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label" for="notes">Notes</label>
+                                        <div class="col-md-9">
+                                            <textarea id="notes" class="form-control" rows="3" disabled="" name="notes" ng-model="productItemLog.notes"> </textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label" for="reorderlevel"> Re-Order Level</label>
+                                        <div class="col-md-9">
+                                            <input type="text" id="reorderlevel" class="form-control" ng-model="productItemLog.reorderLevel" name="reorderlevel" disabled="">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label" for="barCode">Bar Code</label>
+                                        <div class="col-md-9">
+                                            <input type="text" id="barCode" class="form-control" disabled="" ng-model="productItemLog.barcode" name="barCode">
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-sm-offset-3 col-sm-9 m-b-10">
+                                        <div class="checkbox checkbox-primary">
+                                            <input type="checkbox" name="canExpire" disabled="" ng-model="productItemLog.canExpire" class="">
+                                            <label for="canExpire">
+                                                Can Expire
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group" ng-show="productItemLog.canExpire">
+                                        <label class="col-md-3 control-label" for="expirydate">Expiry Date</label>
+
+                                        <div class="col-md-9">
+                                            <input type="text" id="expirydate" class="form-control" ng-model="productItemLog.expiryDate" name="ExpiryDate" disabled="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-sm-7 col-sm-offset-1 ">
+                                    <a ui-sref="list" class="btn btn-warning waves-effect waves-light">
+                                        <span class="btn-label">
+                                            <i class="fa fa-arrow-circle-o-left"></i>
+                                        </span>Back to Stock List
+                                    </a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+
+            <div class="panel-group panel-group-joined" id="accordion-test">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion-test" ng-click="getItemHistory('@Url.Content("~/api/stockapi/GetProductHistory")')" href="javascript:void(0);#collapseOne" class="collapsed">
+                                Product Sales History ({{total}})
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse">
+                        <div class="panel-body" block-ui="productHistoryBlockUI">
+
+
+                            <div class="clearfix">
+                                @*<div class="pull-left">
+                                    <h4 class="portlet-title text-dark text-uppercase">
+                                        Product Sales History Listing 
+                                    </h4>
+                                </div>*@
+
+                                <div class="pull-right">
+                                    <span class="vertical-middle">Items:</span>
+                                    <div class="btn-group vertical-middle" data-toggle="buttons">
+                                        <label class="btn btn-white btn-md waves-effect" ng-class="{'active': pageSize==10}">
+                                            <input type="radio" autocomplete="off" ng-model="pageSize" value='10'> 10
+                                        </label>
+                                        <label class="btn btn-white btn-md waves-effect" value="25" ng-class="{'active': pageSize==25}">
+                                            <input type="radio" autocomplete="off" value='50' ng-model="pageSize"> 25
+                                        </label>
+                                        <label class="btn btn-white btn-md waves-effect" ng-class="{'active': pageSize==50}">
+                                            <input type="radio" autocomplete="off" value='50' ng-model="pageSize"> 50
+                                        </label>
+                                        <label class="btn btn-white btn-md waves-effect" ng-class="{'active': pageSize==100}">
+                                            <input type="radio" autocomplete="off" value='100' ng-model="pageSize"> 100
+                                        </label>
+                                        <label class="btn btn-white btn-md waves-effect" ng-class="{'active': pageSize==200}">
+                                            <input type="radio" autocomplete="off" value='200' ng-model=" pagesize"> 200
+                                        </label>
+
+
+
+                                        <dir-pagination-controls data-on-page-change="salesHistorypageChanged(newPageNumber,'#searchform')">
+
+                                        </dir-pagination-controls>
+
+                                    </div>
+                                </div>
+
+                                @*<div class="">
+                                        <dir-pagination-controls data-on-page-change="salesHistorypageChanged(newPageNumber,'#searchform')">
+
+                                        </dir-pagination-controls>
+                                    </div>*@
+                            </div>
+                            <hr style="border-color: white" />
+
+                            <div class="table-responsive">
+                                <table class="table table-actions-bar table-striped table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Purchased Date</th>
+                                            <th>Quantity</th>
+                                            <th>Discountable</th>
+                                            <th>Unit Price</th>
+                                            <th>Total Price</th>
+
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        <tr dir-paginate="sh in salesHistory | itemsPerPage: itemsOnPage" id="{{sh.id}}" total-items="total" current-page="pagination.current" @*template-url="@Url.Content("~/Scripts/dirPagination.tpl.html")"*@>
+                                            <th scope="row" ng-bind="getSerialNo($index + 1)"></th>
+                                            <td>{{(sh.entryDate) || 'NA' }}</td>
+                                            <td ng-bind="sh.quantity  || 'NA' "></td>
+                                            <td ng-bind="sh.isDiscountable ? 'Yes':'No'">Yes</td>
+                                            <td ng-bind="(sh.sellPrice | currency :'&#8358;') || 'NA' "></td>
+                                            <td ng-bind="(sh.total | currency : '&#8358;') || 'NA' "></td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

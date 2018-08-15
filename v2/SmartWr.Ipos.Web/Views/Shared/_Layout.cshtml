@@ -1,0 +1,192 @@
+﻿@using System.Web.Optimization
+@using SmartWr.Ipos.Core.Settings
+@using SmartWr.Ipos.Core.Utilities
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Smartware Interactive Point of Sale (IPOS)">
+    <meta name="author" content="Smartware Solutions">
+    <link rel="shortcut icon" href="~/images/fav.png">
+
+    <title>@IposConfig.AppName - @ViewBag.Title</title>
+    @*@Styles.Render("~/Styles/cssStyles")*@
+    @RenderSection("styles", false)
+
+    <link rel="stylesheet" href="~/Content/plugins/morris/morris.css">
+
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/css/core.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/css/components.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/css/icons.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/css/pages.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/css/responsive.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/loading-bar.css" rel="stylesheet" />
+    <link href="~/Content/angular-block-ui.css" rel="stylesheet" />
+    <link href="~/Content/css/styles.css" rel="stylesheet" />
+    <link href="~/Content/plugins/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.css" rel="stylesheet" />
+
+
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+    @*
+        <script src="~/Scripts/modernizr.min.js"></script>*@
+    <style type="text/css">
+        [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+            display: none !important;
+        }
+    </style>
+</head>
+<body class="fixed-left">
+    <div id="wrapper">
+        <div class="topbar">
+            <div class="topbar-left">
+                <div class="text-center">
+                    <a href="~/" class="logo"><img src="~/content/images/fav.png" alt="logo" class="img-responsive" /></a>
+                </div>
+            </div>
+
+            <div class="navbar navbar-default" role="navigation">
+                <div class="container">
+                    <div class="">
+                        <div class="pull-left">
+                            <button class="button-menu-mobile open-left">
+                                <i class="ion-navicon"></i>
+                            </button>
+                            <span class="clearfix"></span>
+                        </div>
+
+                        <ul class="nav navbar-nav navbar-right pull-right">
+                            @*<li class="dropdown hidden-xs">
+                                    <a href="#" data-target="#" class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-expanded="true">
+                                        <i class="icon-bell"></i> <span class="badge badge-xs badge-danger">3</span>
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-menu-lg">
+                                        <li class="notifi-title"><span class="label label-default pull-right">New 3</span>Notifications</li>
+                                        <li class="list-group nicescroll notification-list">
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);" class="list-group-item text-right">
+                                                <small class="font-600">See all notifications</small>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <li class="hidden-xs">
+                                    <a href="javascript:void(0);" class="right-bar-toggle waves-effect waves-light"><i class="icon-envelope"></i></a>
+                                </li>*@
+                            <li class="dropdown">
+                                <a href="javascript:void(0);" class="dropdown-toggle profile" data-toggle="dropdown" aria-expanded="true">
+                                    <span>@User.Identity.Name <i class="fa fa-angle-down"></i></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <!--Todo: Please uncomment and complete below-->
+                                    @*<li><a href="javascript:void(0)"><i class="ti-user m-r-5"></i> Profile</a></li>
+                                        <li><a href="javascript:void(0)"><i class="ti-settings m-r-5"></i> Settings</a></li>*@
+                                    <li><a href="@Url.Content("~/auth/signout")"><i class="ti-power-off m-r-5"></i> Logout</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="left side-menu">
+            <div class="sidebar-inner slimscrollleft">
+                <div id="sidebar-menu">
+                    <ul>
+                        <li class="text-muted menu-title">Navigation</li>
+                        <li class="sub">
+                            <a href="~/" class="waves-effect @Url.SetActiveClass("home")"><i class="ti-home"></i> <span> Dashboard </span> </a>
+                        </li>
+                        <li class="has_sub">
+                            <a href="javascript:void(0);" class="waves-effect @Url.SetActiveClass("category")"><i class="fa fa-tags"></i> <span>Category</span> </a>
+                            <ul class="list-unstyled">
+
+                                <li><a href="~/category/main#!/categories">Existing Categories</a></li>
+                                <li><a href="~/category/main#!/createcategory">New Category</a></li>
+                            </ul>
+                        </li>
+                        <li class="has_sub">
+                            <a href="javascript:void(0);" class="waves-effect @Url.SetActiveClass("stock")"><i class="ti-menu-alt"></i> <span>Stock</span> </a>
+                            <ul class="list-unstyled">
+                                <li><a href="~/stock/main#!/stocks">Stocks</a></li>
+                                <li><a href="~/stock/main#!/createstock">New Stock</a></li>
+                            </ul>
+                        </li>
+                        @if (User != null && User.IsInRole("ADMIN"))
+                        {
+                            <li class="has_sub">
+                                <a href="javascript:void(0);" class="waves-effect @Url.SetActiveClass("transaction")">
+                                    <i class="md md-equalizer"></i>
+                                    <span>Sales</span>
+                                </a>
+                                <ul class="list-unstyled">
+                                    <li><a href="~/transaction/main#!/transactions">Cashier Sales</a></li>
+                                    <li><a href="~/transaction/main#!/pendingpost">Post Sales</a></li>
+                                </ul>
+                            </li>
+                            <li class="has_sub">
+                                <a href="javascript:void(0);" class="waves-effect @Url.SetActiveClass("tools")"><i class="md md-settings"></i> <span>Settings</span> </a>
+                                <ul class="list-unstyled">
+                                    <li><a href="~/tools/main#!/wasteditems">Waste Log</a></li>
+                                    <li><a href="~/tools/main#!/auditlog">Audit Trail</a></li>
+                                    <li class="has_sub">
+                                        <a href="javascript:void(0);" class="waves-effect"><span>Messaging</span> </a>
+                                        <ul style="">
+                                            @*<li><a href="~/tools/main#!/sms"><span>SMS</span></a></li>*@
+                                            <li><a href="~/tools/main#!/emailapp/compose"><span>E-mail</span></a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="has_sub">
+                                <a href="javascript:void(0);" class="waves-effect @Url.SetActiveClass("auth")"><i class="fa-users fa"></i> <span>Account</span> </a>
+                                <ul class="list-unstyled">
+                                    <li><a href="~/auth/main#!/useraccounts">Users</a></li>
+                                </ul>
+                            </li>
+                        }
+                        <li class="has_sub">
+                            <a href="javascript:void(0);" class="waves-effect @Url.SetActiveClass("aboutus")"><i class="glyphicon glyphicon-user"></i> <span>About</span> </a>
+                            <ul class="list-unstyled">
+                                <li><a href="~/aboutus/index"><i class="glyphicon glyphicon-shopping-cart"></i>IPOS</a></li>
+                                <li><a href="~/aboutus/weare/"><i class="glyphicon glyphicon-comment"></i>Smartware Soln.</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+    <div class="content-page" ng-app="iposApp" ng-cloak>
+        @RenderBody()
+        <footer class="footer text-right">
+            Copyright &copy; @DateTime.Now.Year <a target="_smartware" href="http://www.smartware.com.ng">Smartware Solutions</a>
+        </footer>
+    </div>
+    @Scripts.Render("~/Scripts/jsScripts")
+
+    <script type="text/javascript">
+        var resizefunc = [];
+        window.app = {},
+        app.appUrl = '@Url.Content("~/")',
+        app.highlight = function (o, r) { $(o).removeClass("error").addClass("parsley-error") },
+        app.unhighlight = function (o, r, t) { $(o).removeClass("parsley-error") },
+        app.notifier = function (o, r, t) { $.Notification.notify(o, "right top", r, t) },
+        $("body").tooltip({ selector: '[data-toggle="tooltip"]' });
+    </script>
+
+    <script type="text/javascript" src="~/App/app.js"></script>
+    <script src="~/App/directive/directives.js"></script>
+    <script src="~/App/common/requestSvc.js"></script>
+
+    @RenderSection("Scripts", false)
+</body>
+</html>

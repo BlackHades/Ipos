@@ -1,0 +1,123 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.15
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartWr.Ipos.Web", "SmartWr.Ipos.Web\SmartWr.Ipos.Web.csproj", "{BCCCE406-9E0C-4BC5-8FE2-D5891659E50F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartWr.Ipos.Core", "SmartWr.Ipos.Core\SmartWr.Ipos.Core.csproj", "{648EB32D-D65C-41E4-BF16-727370B975AD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{22D0095D-5034-4B96-9D8D-61E57F8FED3B}"
+	ProjectSection(SolutionItems) = preProject
+		nuget.config = nuget.config
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IposUserMigrator", "IposUserMigrator\IposUserMigrator.csproj", "{2B910B73-E2CC-47E2-8EF9-149CA7CBBE57}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ipos.Wpf", "Ipos.Wpf\Ipos.Wpf.csproj", "{BEB2D255-4BA6-4E57-A897-27CAF6F3991B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ipos.Wpf.Logic", "Ipos.Wpf.Logic\Ipos.Wpf.Logic.csproj", "{2B5A859F-BAF2-4E10-8A80-BA6C33B63E96}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Ipos Sync Fire", "Ipos Sync Fire", "{66F21774-9748-47F4-BA98-5333A421A527}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Desktop", "Desktop", "{28EFEF3B-E31D-4263-86BE-DFBE9AF98C1F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web Client", "Web Client", "{E73FB7AE-3DF6-49C2-A20F-8CF72AAAB823}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ipos.Sync", "Ipos.Sync\Ipos.Sync.csproj", "{9F05964F-5411-4CB1-9725-74E340042D76}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ipos.Sync.Core", "Ipos.Sync.Core\Ipos.Sync.Core.csproj", "{9AC27340-FD2A-4C71-A660-CA7975C2F96B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ipos.Sync.StoreDataProviders", "Ipos.Sync.StoreDataProviders\Ipos.Sync.StoreDataProviders.csproj", "{1999A0C6-3108-4AEE-BA2D-14808080530F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BCCCE406-9E0C-4BC5-8FE2-D5891659E50F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCCCE406-9E0C-4BC5-8FE2-D5891659E50F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCCCE406-9E0C-4BC5-8FE2-D5891659E50F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCCCE406-9E0C-4BC5-8FE2-D5891659E50F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{648EB32D-D65C-41E4-BF16-727370B975AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{648EB32D-D65C-41E4-BF16-727370B975AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{648EB32D-D65C-41E4-BF16-727370B975AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{648EB32D-D65C-41E4-BF16-727370B975AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B910B73-E2CC-47E2-8EF9-149CA7CBBE57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B910B73-E2CC-47E2-8EF9-149CA7CBBE57}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B910B73-E2CC-47E2-8EF9-149CA7CBBE57}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B910B73-E2CC-47E2-8EF9-149CA7CBBE57}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BEB2D255-4BA6-4E57-A897-27CAF6F3991B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BEB2D255-4BA6-4E57-A897-27CAF6F3991B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BEB2D255-4BA6-4E57-A897-27CAF6F3991B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BEB2D255-4BA6-4E57-A897-27CAF6F3991B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B5A859F-BAF2-4E10-8A80-BA6C33B63E96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B5A859F-BAF2-4E10-8A80-BA6C33B63E96}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B5A859F-BAF2-4E10-8A80-BA6C33B63E96}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B5A859F-BAF2-4E10-8A80-BA6C33B63E96}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F05964F-5411-4CB1-9725-74E340042D76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F05964F-5411-4CB1-9725-74E340042D76}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F05964F-5411-4CB1-9725-74E340042D76}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F05964F-5411-4CB1-9725-74E340042D76}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9AC27340-FD2A-4C71-A660-CA7975C2F96B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9AC27340-FD2A-4C71-A660-CA7975C2F96B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9AC27340-FD2A-4C71-A660-CA7975C2F96B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9AC27340-FD2A-4C71-A660-CA7975C2F96B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1999A0C6-3108-4AEE-BA2D-14808080530F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1999A0C6-3108-4AEE-BA2D-14808080530F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1999A0C6-3108-4AEE-BA2D-14808080530F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1999A0C6-3108-4AEE-BA2D-14808080530F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BCCCE406-9E0C-4BC5-8FE2-D5891659E50F} = {E73FB7AE-3DF6-49C2-A20F-8CF72AAAB823}
+		{648EB32D-D65C-41E4-BF16-727370B975AD} = {E73FB7AE-3DF6-49C2-A20F-8CF72AAAB823}
+		{2B910B73-E2CC-47E2-8EF9-149CA7CBBE57} = {E73FB7AE-3DF6-49C2-A20F-8CF72AAAB823}
+		{BEB2D255-4BA6-4E57-A897-27CAF6F3991B} = {28EFEF3B-E31D-4263-86BE-DFBE9AF98C1F}
+		{2B5A859F-BAF2-4E10-8A80-BA6C33B63E96} = {28EFEF3B-E31D-4263-86BE-DFBE9AF98C1F}
+		{9F05964F-5411-4CB1-9725-74E340042D76} = {66F21774-9748-47F4-BA98-5333A421A527}
+		{9AC27340-FD2A-4C71-A660-CA7975C2F96B} = {66F21774-9748-47F4-BA98-5333A421A527}
+		{1999A0C6-3108-4AEE-BA2D-14808080530F} = {66F21774-9748-47F4-BA98-5333A421A527}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 9
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://smartwareng.visualstudio.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = SmartWr.Ipos.Web\\SmartWr.Ipos.Web.csproj
+		SccProjectTopLevelParentUniqueName1 = SmartWr.Ipos.sln
+		SccProjectName1 = SmartWr.Ipos.Web
+		SccLocalPath1 = SmartWr.Ipos.Web
+		SccProjectUniqueName2 = SmartWr.Ipos.Core\\SmartWr.Ipos.Core.csproj
+		SccProjectTopLevelParentUniqueName2 = SmartWr.Ipos.sln
+		SccProjectName2 = SmartWr.Ipos.Core
+		SccLocalPath2 = SmartWr.Ipos.Core
+		SccProjectUniqueName3 = IposUserMigrator\\IposUserMigrator.csproj
+		SccProjectTopLevelParentUniqueName3 = SmartWr.Ipos.sln
+		SccProjectName3 = IposUserMigrator
+		SccLocalPath3 = IposUserMigrator
+		SccProjectUniqueName4 = Ipos.Wpf\\Ipos.Wpf.csproj
+		SccProjectTopLevelParentUniqueName4 = SmartWr.Ipos.sln
+		SccProjectName4 = Ipos.Wpf
+		SccLocalPath4 = Ipos.Wpf
+		SccProjectUniqueName5 = Ipos.Wpf.Logic\\Ipos.Wpf.Logic.csproj
+		SccProjectTopLevelParentUniqueName5 = SmartWr.Ipos.sln
+		SccProjectName5 = Ipos.Wpf.Logic
+		SccLocalPath5 = Ipos.Wpf.Logic
+		SccProjectUniqueName6 = Ipos.Sync\\Ipos.Sync.csproj
+		SccProjectTopLevelParentUniqueName6 = SmartWr.Ipos.sln
+		SccProjectName6 = Ipos.Sync
+		SccLocalPath6 = Ipos.Sync
+		SccProjectUniqueName7 = Ipos.Sync.Core\\Ipos.Sync.Core.csproj
+		SccProjectTopLevelParentUniqueName7 = SmartWr.Ipos.sln
+		SccProjectName7 = Ipos.Sync.Core
+		SccLocalPath7 = Ipos.Sync.Core
+		SccProjectUniqueName8 = Ipos.Sync.StoreDataProviders\\Ipos.Sync.StoreDataProviders.csproj
+		SccProjectTopLevelParentUniqueName8 = SmartWr.Ipos.sln
+		SccProjectName8 = Ipos.Sync.StoreDataProviders
+		SccLocalPath8 = Ipos.Sync.StoreDataProviders
+	EndGlobalSection
+EndGlobal

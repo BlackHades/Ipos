@@ -1,0 +1,11 @@
+﻿<h1 ng-init="getItemDetails('@Url.Content("~/api/IPosReportApi/GetDashBoardRecentDetailsItems")')">Transaction Details</h1>
+<div class="form-group">
+    <div class="table-responsive">
+
+        <table class="table table-actions-bar m-b-0">
+            <tr> <td><span>Product Name:</span>  <input value="{{itemDetails.productName}}" type="text" readonly="readonly" /></td><td><span>Staff Name:</span>  <input value="{{itemDetails.staffname}}" type="text" readonly="readonly" /></td></tr>
+            <tr><td><span>Price:</span>  <input value="{{itemDetails.price| number: 2}}" type="text" readonly="readonly" /></td><td><span>Cost Price:</span>  <input value="{{itemDetails.costPrice| number: 2}}" type="text" readonly="readonly" /></td></tr>
+            <tr><td><span>Quantity:</span>  <input value="{{itemDetails.quantity}}" type="text" readonly="readonly" /></td></tr>
+        </table>
+    </div>
+</div>

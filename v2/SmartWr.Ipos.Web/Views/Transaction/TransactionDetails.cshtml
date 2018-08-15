@@ -1,0 +1,183 @@
+﻿@{
+    Layout = null;
+}
+
+<style>
+    .block-ui-overlay {
+        background-color: rgba(98, 95, 95, 0.62);
+    }
+</style>
+
+
+<div class="col-md-12" ng-init="vm.getTransactionDetail('@Url.Content("~/api/iposreportapi/gettransactiondetails?transactionid=")')">
+    <div class="panel panel-default" block-ui="transactionDetailBlockUI">
+        <div class="panel-heading">
+            <h4><i class="fa fa-shopping-cart"></i> Sales Details</h4>
+        </div>
+        <div class="panel-body">
+            <div class="clearfix">
+                <div class="pull-left">
+                    <a ui-sref="main" class="btn btn-warning waves-effect waves-light">
+                        <span class="btn-label">
+                            <i class="fa fa-arrow-circle-o-left"></i>
+                        </span>Back to Sales List
+                    </a>
+                </div>
+                <div class="pull-right" style="margin-top: -15px;">
+                    <h5>
+                        Sales # <br>
+                        <strong>{{vm.orderDetails.orderUId}}</strong>
+                    </h5>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="pull-left m-t-30">
+                        <address>
+                            <strong>{{vm.orderDetails.customerName || 'Name unavailable'}}</strong><br>
+                            {{vm.orderDetails.address || 'Address unavailabe'}}<br>
+                            <abbr title="Phone">Phone:</abbr> {{vm.orderDetails.phoneNo||'NA'}}
+                        </address>
+                    </div>
+                    <div class="pull-right m-t-30">
+                        <p>
+                            <strong>Sales Date: </strong> {{vm.orderDetails.createdDate}}
+                        </p>
+                        <p class="m-t-10">
+                            <strong>Sales Status: </strong>
+                            <span ng-class="{'label':true, 'label-success':vm.orderDetails.status==='CLOSED','label-warning':vm.orderDetails.status==='NEW_OPEN','label-danger':vm.orderDetails.status==='RECALL','label-primary':vm.orderDetails.status==='POST' }">
+                                {{vm.orderDetails.status}}
+                            </span>
+                        </p>
+                        <p class="m-t-10"><strong>Payment Method: </strong> {{vm.orderDetails.paymentMethod}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <p><strong>Remark</strong></p>
+                    <p><span ng-bind="vm.orderDetails.remark||'NA'"></span></p>
+                </div>
+            </div>
+            <div class="m-h-50"></div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="table-responsive">
+                        <table class="table m-t-30">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Item</th>
+                                    <th>Qty.</th>
+                                    <th>Unit Cost</th>
+                                    <th>Discount</th>
+                                    <th>Total</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="o in vm.itemsBought" id="{{o.id}}">
+                                    <td ng-bind="$index + 1"></td>
+                                    <td ng-bind="o.fullDescription"></td>
+                                    <td ng-bind="o.quantity"></td>
+                                    <td ng-bind="o.unitCost | currency :'&#8358; '"></td>
+                                    <td>
+                                        <span ng-bind="o.discount | currency :'&#8358; '"></span>
+                                    </td>
+                                    <td ng-bind="o.total | currency :'&#8358; '"></td>
+                                    <td>
+                                        <a data-toggle="tooltip" title="recall" href="javascript:void(0);"><span ng-click="vm.openRecallModal($index,'#con-close-modal')" class="label label-pink">Recall</span></a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="border-radius: 0px;">
+                <div class="col-md-3 col-md-offset-9">
+                    <p class="text-right"><b>Total Discount :</b> {{(vm.orderDetails.discount || 0) | currency :'&#8358; '}} @*%*@</p>
+                    <p class="text-right"><b>Sub-total :</b> {{ vm.orderDetails.subTotal | currency :'&#8358; '}}</p>
+                    <hr>
+                    <h3 class="text-right">{{(vm.orderDetails.total) | currency :'&#8358; '}}</h3>
+                </div>
+            </div>
+            <hr>
+        </div>
+    </div>
+</div>
+
+<div id="con-close-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Recall Sales</h4>
+            </div>
+            <form ng-submit="vm.recallOrderItem($event,'@Url.Content("~/api/orderdetailapi/recallorderitem")')" name="postform">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="field-3" class="control-label">Stock </label>
+                                <input type="text" ng-model="vm.itemName" readonly class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="field-3" class="control-label">Quantity</label>
+                                    <span type="text" number-only class="form-control" readonly ng-disabled="true"
+                                          ng-bind="vm.ordtOldQty"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="field-3" class="control-label">Recall Quantity</label>
+                                    <input type="text" number-only class="form-control" name="quantity" ng-required="true" placeholder="Enter New Quantity" ng-model="vm.ordNewQty" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="field-3" class="control-label">Price</label>
+                                    <span type="text" number-only class="form-control" ng-required="true" placeholder="Old Price"
+                                          ng-bind="vm.ordtOldPrice" readonly ng-disabled="true"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="field-3" class="control-label">Recall Amount</label>
+                                    <input type="text" number-only class="form-control" name="price" ng-required="true" placeholder="Enter New Price"
+                                           ng-model="vm.ordNewPrice" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="form-group no-margin">
+                                <label for="field-7" class="control-label">Reason for Recall</label>
+                                <textarea class="form-control autogrow " ng-required="true" placeholder="Type Reason" name="comment" style="overflow: hidden; word-wrap: break-word; resize: horizontal; height: 104px;"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" data-dismiss="modal" class="btn btn-danger waves-effect waves-light">
+                        <span class="btn-label">
+                            <i class="fa fa-times"></i>
+                        </span>Close
+                    </button>
+                    <button type="submit" ng-disabled="!postform.$valid" class="btn btn-success waves-effect waves-light">
+                        <i class="md md-reply m-r-5"></i>
+                        <span>Recall</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,5 @@
+D:\WorkSpace\Web\Smartware Interactive POS 2\v2\Ipos.Wpf.Logic\bin\Debug\Ipos.Wpf.Logic.dll
+D:\WorkSpace\Web\Smartware Interactive POS 2\v2\Ipos.Wpf.Logic\bin\Debug\Ipos.Wpf.Logic.pdb
+D:\WorkSpace\Web\Smartware Interactive POS 2\v2\Ipos.Wpf.Logic\obj\Debug\Ipos.Wpf.Logic.csprojResolveAssemblyReference.cache
+D:\WorkSpace\Web\Smartware Interactive POS 2\v2\Ipos.Wpf.Logic\obj\Debug\Ipos.Wpf.Logic.dll
+D:\WorkSpace\Web\Smartware Interactive POS 2\v2\Ipos.Wpf.Logic\obj\Debug\Ipos.Wpf.Logic.pdb

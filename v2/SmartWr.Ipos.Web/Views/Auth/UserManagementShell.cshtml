@@ -1,0 +1,30 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "User Account Management";
+}
+@section styles{
+    <link href="~/Content/plugins/select2/select2.css" rel="stylesheet" />
+    <link href="~/Content/plugins/select2/select2-bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/angular-block-ui.css" rel="stylesheet" />
+}
+<div class="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h4 class="page-title">User Management</h4>
+                <p class="text-muted page-title-alt">Create, Edit and Delete user account</p>
+            </div>
+        </div>
+        <div class="row">
+            <div ui-view>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Content/plugins/select2/select2.min.js"></script>
+    <script src="~/App/auth/auth.config.js"></script>
+    <script src="~/App/auth/authctrl.js"></script>
+<script src="~/Scripts/angular-block-ui.js"></script>
+}

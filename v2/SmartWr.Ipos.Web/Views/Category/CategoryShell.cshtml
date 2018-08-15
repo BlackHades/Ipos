@@ -1,0 +1,38 @@
+﻿@{
+    ViewBag.Title = "Category Management";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Styles{
+    <link href="~/Content/angular-block-ui.css" rel="stylesheet" />
+}
+
+<div class="content">
+    <div class="container">
+        <!-- Page-Title -->
+        <div class="row">
+            <div class="col-sm-12">
+                <h4 class="page-title">Category Management</h4>
+                <p class="text-muted page-title-alt">Perform category related activities here i.e. listing, edit, delete category.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div ui-view autoscroll="false">
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/App/category/categoryconfig.js"></script>
+    <script src="~/Scripts/smartwr/serialize2json.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/App/category/categoryCtrl.js"></script>
+    <script src="~/Scripts/angular-block-ui.js"></script>
+
+    <script>
+        jQuery(document).ready(function () {
+            $('[data-toggle="tooltip"]').tooltip({ 'placement': 'bottom' });
+        });
+    </script>
+}

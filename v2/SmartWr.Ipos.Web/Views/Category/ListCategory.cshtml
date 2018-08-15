@@ -1,0 +1,161 @@
+﻿@{
+    Layout = null;
+}
+
+<style>
+    .block-ui-overlay {
+        background-color: rgba(98, 95, 95, 0.62);
+    }
+    .checkbox {
+        margin-bottom: 0px;
+        margin-top: 0px;
+        vertical-align: middle;
+        display: inline-block;
+        height: 17px;
+    }
+</style>
+<link href="~/Content/scroll-to-top.css" rel="stylesheet" />
+
+<div class="col-lg-12" ng-init="searchForCategory('@Url.Content("~/api/categoryapi/GetSearchedCategory")')">
+    <div class="portlet">
+        <div class="portlet-heading">
+            <h4 class="portlet-title text-dark text-uppercase">
+                Search Form
+            </h4>
+        </div>
+        <div id="portlet2" class="panel-collapse collapse in">
+            <div class="portlet-body">
+                <div class="row m-t-10 m-b-10">
+                    <div class="col-sm-6 col-lg-8">
+                        <form role="form" ng-submit="searchForCategory('@Url.Content("~/api/categoryapi/GetSearchedCategory")','#searchform')" id="searchform">
+                            <div class="form-group contact-search m-b-30">
+                                <input type="text" class="form-control input-md" ng-model="q" name="q" placeholder="Type some keywords and press enter to search...">
+                                <button type="submit" class="btn btn-white"><i class="fa fa-search"></i></button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="col-sm-6 col-lg-4">
+                        <ul class="pagination pagination-md" style="display: inline">
+                            <li data-ng-class="{'active':itemsPerPage===25}"
+                                data-ng-click="setItemPerPage(25)">
+                                <a href="javascript:void(0)">25</a>
+                            </li>
+                            <li data-ng-class="{'active':itemsPerPage===40}"
+                                data-ng-click="setItemPerPage(40)">
+                                <a href="javascript:void(0)">40</a>
+                            </li>
+                            <li data-ng-class="{'active':itemsPerPage===50}"
+                                data-ng-click="setItemPerPage(50)">
+                                <a href="javascript:void(0)">50</a>
+                            </li>
+                            <li data-ng-class="{'active':itemsPerPage===100}"
+                                data-ng-click="setItemPerPage(100)">
+                                <a href="javascript:void(0)">100</a>
+                            </li>
+                            <li data-ng-class="{'active':itemsPerPage===200}"
+                                data-ng-click="setItemPerPage(200)">
+                                <a href="javascript:void(0)">200</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-box" block-ui="categoryBlockUI">
+
+        <div class="pull-right dropdown">
+            <button class="btn btn-default btn-sm dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                Actions
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                <li>
+                    <a href="javascript:void(0);" ng-click="searchForCategory('@Url.Content("~/api/categoryapi/GetSearchedCategory")','#searchform')"><i class="ion-refresh"></i> Refresh</a>
+                </li>
+
+                <li ng-show="checks.length > 0 ">
+                    <a href="javascript:void(0);" ng-click="deleteMultiple('@Url.Content("~/api/categoryapi/deleteitemcategory")')"><i class="md md-close"></i> Delete selected items</a>
+                </li>
+            </ul>
+        </div>
+
+        <h2 class="text-dark m-b-30 header-title">
+            <span><i class="fa fa-tags"></i> Category Listing ({{total}})</span>
+        </h2>
+
+        <div class="clearfix">
+            <div class="pull-left">
+                <a href="javascript:void(0);" data-ui-sref="create" ng-class="{'m-b-20':total < itemsPerPage}" class="btn btn-default btn-icon btn-md">
+                    <i class="md md-add"></i> <span>Add New Category</span>
+                </a>
+            </div>
+
+            <div class="pull-right" style="margin-top: -20px;">
+                <dir-pagination-controls data-on-page-change="pageChanged(newPageNumber,oldPageNumber,'#searchform')" class="m-b-30" pagination-id="category">
+                </dir-pagination-controls>
+            </div>
+        </div>
+
+
+        <div class="table-responsive" block-ui="categoryDeleteBlockUI">
+            <table class="table table-actions-bar table-striped table-hover">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>
+                        <div class="checkbox checkbox-single">
+                            <input data-ng-click="selectAll($event)"
+                                   data-ng-checked="isSelectedAll()"
+                                   type="checkbox">
+                            <label></label>
+                        </div>
+                    </th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th> Total Products</th>
+                    <th style="min-width: 80px;">Actions</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr dir-paginate="c in category | itemsPerPage: itemsPerPage" pagination-id="category" total-items="total"
+                    current-page="pageIndex">
+                    @*" ng-repeat="c in category | filter : q " id="wrapper">*@
+                    <th scope="row" ng-bind="$index + 1"></th>
+                    <th>
+                        <div class="checkbox checkbox-single">
+                            <input id="chkItem_{{c.categoryUId}}"
+                                   name="chkItem_{{c.categoryUId}}" ng-checked="isSelected(c.categoryUId)"
+                                   ng-click="updateSelection($event, c.categoryUId)" type="checkbox">
+                            <label></label>
+                        </div>
+                    </th>
+                    <td ng-bind="c.name || 'NA' "></td>
+                    <td ng-bind="c.description || 'NA' "></td>
+                    <td ng-bind="c.productCount"></td>
+                    <td>
+
+                        <span class="co-name">
+                                <a ui-sref="viewdetail({id:c.categoryUId})"><span class="label label-purple nosubmenu">View Details</span></a>
+                                | <a ui-sref="edit({id:c.categoryUId})"> <span class="label label-warning nosubmenu">Edit</span></a>
+                                | <a href="javascript:void(0);"><span ng-click="removecategory('@Url.Content("~/api/categoryapi/deleteitemcategory")' , $index)" class="label label-danger nosubmenu">Delete</span></a>
+                            </span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="clearfix">
+            <div class="pull-right">
+                <dir-pagination-controls>
+                </dir-pagination-controls>
+            </div>
+        </div>
+    </div>
+</div>
+<a href="#0" class="cd-top">Top</a>
+
+<script src="~/Scripts/scroll-to-top.js"></script>

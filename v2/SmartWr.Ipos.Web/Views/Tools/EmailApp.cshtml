@@ -1,0 +1,19 @@
+﻿@{
+    Layout = null;
+}
+
+<div class="col-lg-3 col-md-4">
+
+    <div class="p-20">
+        <a ui-sref="email.compose" class="btn btn-danger btn-rounded btn-custom btn-block waves-effect waves-light">Compose</a>
+
+        <div class="list-group mail-list  m-t-20">
+            <a @*ui-sref="email.sent"*@ href="javascript:void(0);" class="list-group-item b-0"><i class="fa fa-paper-plane-o m-r-10"></i>Sent Mail<b> (0) </b></a>
+        </div>
+    </div>
+</div>
+
+<div class="col-lg-9 col-md-8">
+    <ui-view>
+    </ui-view>
+</div>

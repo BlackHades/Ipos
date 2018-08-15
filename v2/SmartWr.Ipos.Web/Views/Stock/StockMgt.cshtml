@@ -1,0 +1,115 @@
+﻿
+@{
+    ViewBag.Title = "StockMgt";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content" ng-controller="stockCtrl">
+    <div class="container">
+        <div class="clearfix">
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card-box">
+                    <h4 class="m-t-0 header-title"><b>Stock Item</b></h4>
+                    <div class="row">
+                        <div class="col-md-12">
+
+                            <div class="form-group">
+                                <label class="col-md-2 control-label">Keyword</label>
+                                <div class="col-md-4">
+                                    <input type="text" class="form-control" name="Keyword">
+                                </div>
+                                <label class="col-md-2 control-label" for="example-email">Category</label>
+                                <div class="col-md-4" ng-init="getCategories('@Url.Content("~/api/StockApi/GetCategoryValues")')">
+                                    <select class="form-control" ng-options="r.id as r.name for r in categories" ng-model="category">
+                                        <option value="">--Select a Category--</option>
+                                    </select>
+
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12">
+                                <div class="card-box">
+                                    <div class="text-left">
+
+                                        <a id="" class="btn btn-success">Create New</a>
+                                        <br />
+                                        <p class="text-muted">Item Count :<b class="counter">{{transactions.totalWeekSales|number:2}}</b></p>
+                                    </div>
+
+                                    <div class="table-responsive" ng-init="">
+                                        <table class="table table-actions-bar m-b-0">
+                                            <thead>
+                                                <tr>
+                                                    <th></th>
+                                                    <th> Name</th>
+                                                    <th>Expired</th>
+                                                    <th>Category</th>
+                                                    <th>Price</th>
+                                                    <th>Cost</th>
+                                                    <th>Quantity</th>
+                                                    <th>Restock Level</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr ng-repeat="b in faultyItems">
+                                                    <td>
+                                                        <div class="dropdown">
+                                                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                                                Action
+                                                                <span class="caret"></span>
+                                                            </button>
+                                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                                                <li>
+                                                                    <a href="javascript:;" ui-sref="boughtFaultyItemsdetails({itemid: b.spoilId})">Edit</a>
+                                                                </li>
+
+
+                                                            </ul>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <span ng-bind="b.name"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span ng-bind="b.quantity"></span>
+                                                    </td>
+
+                                                    <td>
+                                                        <span>{{fnConverDate(b.entDate)}}</span>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+@section Scripts{
+    <script src="~/Scripts/jquery.validate-vsdoc.js"></script>
+    <script src="~/App/stock/stockCtrl.js"></script>
+
+   @*<script type='text/javascript'>
+       //Define your scripts
+       $(function () {
+           //When an <li> element in your myMenu area is clicked
+           $('#sidebar-menu li').click(function () {
+               //Removes the active class from any <li> elements
+               $('li.active').removeClass('active');
+               //Adds it to the current element
+               $(this).addClass('active');
+
+           });
+       });
+</script>*@
+}

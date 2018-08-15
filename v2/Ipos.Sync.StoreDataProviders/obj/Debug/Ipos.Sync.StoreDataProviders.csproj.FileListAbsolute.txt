@@ -1,0 +1,1 @@
+D:\WorkSpace\Web\Smartware Interactive POS 2\v2\Ipos.Sync.StoreDataProviders\obj\Debug\Ipos.Sync.StoreDataProviders.csprojResolveAssemblyReference.cache

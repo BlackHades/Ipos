@@ -1,0 +1,43 @@
+﻿@{
+    ViewBag.Title = "Tools & Settings";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section styles{
+    <link href="~/Content/plugins/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css" rel="stylesheet"/>
+<link href="~/Content/scroll-to-top.css" rel="stylesheet" />
+
+    <link href="~/Content/plugins/summernote/dist/summernote.css" rel="stylesheet" />
+    <link href="~/Content/plugins/Selectize/dist/css/selectize.css" rel="stylesheet" />
+    <link href="~/Content/plugins/Selectize/dist/css/selectize.bootstrap3.css" rel="stylesheet" />
+    <link href="~/Content/wysiwyg5/bootstrap3-wysihtml5.min.css" rel="stylesheet" />
+<link href="~/Content/angular-block-ui.css" rel="stylesheet" />
+}
+
+<div class="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h4 class="page-title">Tools &amp; Settings</h4>
+                <p class="text-muted page-title-alt">Send Messages, View Audit and Waste log</p>
+            </div>
+        </div>
+        <div class="row">
+            <div ui-view>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/App/tools/tools.config.js"></script>
+    <script src="~/Scripts/smartwr/serialize2json.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Content/plugins/Selectize/dist/js/standalone/selectize.min.js"></script>
+    <script src="~/Content/wysiwyg5/handlebars.runtime.min.js"></script>
+    <script src="~/Content/wysiwyg5/bootstrap3-wysihtml5.all.min.js"></script>
+    <script src="~/Content/plugins/bootstrap-filestyle/src/bootstrap-filestyle.min.js"></script>
+    <script src="~/App/tools/toolsCtrl.js"></script>
+    <script src="~/Scripts/angular-block-ui.js"></script>
+    <script src="~/Scripts/scroll-to-top.js"></script>
+}

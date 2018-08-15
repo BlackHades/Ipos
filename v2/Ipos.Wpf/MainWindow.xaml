@@ -1,0 +1,20 @@
+﻿<mahapp:MetroWindow x:Class="Ipos.Wpf.MainWindow"
+                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:mahapp="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+                    Title="Smartware Interactive Point of Sale"
+                    Width="910.608"
+                    Height="868.098"
+                    GlowBrush="{DynamicResource AccentColorBrush}"
+                    Icon="Resources/Images/ipos.png"
+                    ResizeMode="NoResize"
+                    ShowMaxRestoreButton="False"
+                    TitleCaps="True"
+                    WindowState="Maximized">
+    <mahapp:MetroWindow.RightWindowCommands>
+        <mahapp:WindowCommands>
+            <Button>Settings</Button>
+        </mahapp:WindowCommands>
+    </mahapp:MetroWindow.RightWindowCommands>
+    <Grid />
+</mahapp:MetroWindow>

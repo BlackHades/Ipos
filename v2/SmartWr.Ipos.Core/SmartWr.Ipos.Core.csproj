@@ -1,0 +1,743 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{648EB32D-D65C-41E4-BF16-727370B975AD}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SmartWr.Ipos.Core</RootNamespace>
+    <AssemblyName>SmartWr.Ipos.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+    <WebGreaseLibPath>..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.4.1.9004, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Autofac, Version=3.5.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Autofac.Integration.Mvc, Version=3.3.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Autofac.Mvc5.3.3.4\lib\net45\Autofac.Integration.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Integration.WebApi, Version=3.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Autofac.WebApi2.3.4.0\lib\net45\Autofac.Integration.WebApi.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper, Version=4.2.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.4.2.1\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.HttpListener, Version=2.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.HttpListener.2.0.2\lib\net45\Microsoft.Owin.Host.HttpListener.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Hosting, Version=2.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Hosting.2.0.2\lib\net45\Microsoft.Owin.Hosting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.2012.Runtime.11.0.3452.0\lib\Microsoft.ReportViewer.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.2012.Runtime.11.0.3452.0\lib\Microsoft.ReportViewer.ProcessingObjectModel.DLL</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.2012.Runtime.11.0.3452.0\lib\Microsoft.ReportViewer.WebForms.DLL</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.11.0.2\lib\net20\Microsoft.SqlServer.Types.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NLog, Version=3.2.1.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\NLog.4.2.3\lib\net45\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SmartWr.WebFramework.Library, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>3rd Party Libs\SmartWr.WebFramework.Library.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity.Design" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.Owin, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Owin.5.2.3\lib\net45\System.Web.Http.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WebGrease, Version=1.5.2.14234, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Automapper\AccountDtoToAppUserVmConverter.cs" />
+    <Compile Include="Automapper\AppUserToAppUserVmConverter.cs" />
+    <Compile Include="Automapper\AuditDtoVmConverter.cs" />
+    <Compile Include="Automapper\FaultyProductDtoSpoilVmConverter.cs" />
+    <Compile Include="Automapper\GetCategoryDtoVmConverter.cs" />
+    <Compile Include="Automapper\OrderDetailDtoVmConverter.cs" />
+    <Compile Include="Automapper\OrderDetailSalesHistoryDtoConverter.cs" />
+    <Compile Include="Automapper\OrderDetailVmConverter.cs" />
+    <Compile Include="Automapper\ProductDtoVmConverter.cs" />
+    <Compile Include="Automapper\ProductVmConverter.cs" />
+    <Compile Include="Automapper\OrderDetailDtoSalesVmConverter.cs" />
+    <Compile Include="Automapper\SalesReccordDtoVmConverter.cs" />
+    <Compile Include="Caching\Extensions.cs" />
+    <Compile Include="Caching\ICacheManager.cs" />
+    <Compile Include="Caching\MemoryCacheManager.cs" />
+    <Compile Include="Caching\NopNullCache.cs" />
+    <Compile Include="Caching\PerRequestCacheManager.cs" />
+    <Compile Include="Context\IPosDbContext.cs" />
+    <Compile Include="Context\Services\AuditTrailService.cs" />
+    <Compile Include="Context\Services\CategoryService.cs" />
+    <Compile Include="Context\Services\CustomerService.cs" />
+    <Compile Include="Context\Services\IposMembershipService.cs" />
+    <Compile Include="Context\Services\IPosReportService.cs" />
+    <Compile Include="Context\Services\OrderDetailService.cs" />
+    <Compile Include="Context\Services\ProductService.cs" />
+    <Compile Include="Context\Services\SpoilService.cs" />
+    <Compile Include="Controllers\ApiControllers\AuthApiController.cs" />
+    <Compile Include="Controllers\ApiControllers\CategoryApiController.cs" />
+    <Compile Include="Controllers\ApiControllers\IPosReportApiController.cs" />
+    <Compile Include="Controllers\ApiControllers\IposTempApiController.cs" />
+    <Compile Include="Controllers\ApiControllers\OrderDetailApiController.cs" />
+    <Compile Include="Controllers\ApiControllers\StockApiController.cs" />
+    <Compile Include="Controllers\ApiControllers\ToolsApiController.cs" />
+    <Compile Include="Controllers\BaseApiController.cs" />
+    <Compile Include="Controllers\BaseMvcController.cs" />
+    <Compile Include="Controllers\MvcControllers\AboutUsController.cs" />
+    <Compile Include="Controllers\MvcControllers\AuthController.cs" />
+    <Compile Include="Controllers\MvcControllers\CategoryController.cs" />
+    <Compile Include="Controllers\MvcControllers\ErrorController.cs" />
+    <Compile Include="Controllers\MvcControllers\HomeController.cs" />
+    <Compile Include="Controllers\MvcControllers\StockController.cs" />
+    <Compile Include="Controllers\MvcControllers\ToolsController.cs" />
+    <Compile Include="Controllers\MvcControllers\TransactionController.cs" />
+    <Compile Include="Dtos\AccountDto.cs" />
+    <Compile Include="Dtos\AuditDto.cs" />
+    <Compile Include="Dtos\CustomerDto.cs" />
+    <Compile Include="Dtos\FaultyProductsDto.cs" />
+    <Compile Include="Dtos\GetCategoryDto.cs" />
+    <Compile Include="Dtos\OrderDetailDto.cs" />
+    <Compile Include="Dtos\OrderDetailSalesHistoryDto.cs" />
+    <Compile Include="Dtos\OrderDto.cs" />
+    <Compile Include="Dtos\ProductDto.cs" />
+    <Compile Include="Dtos\RecentItemBoughtDto.cs" />
+    <Compile Include="Dtos\RecentItemDetailsDto.cs" />
+    <Compile Include="Dtos\RestockDto.cs" />
+    <Compile Include="Dtos\SalesRecordDto.cs" />
+    <Compile Include="Enums\AuditType.cs" />
+    <Compile Include="Enums\EmailType.cs" />
+    <Compile Include="Enums\OrderStatus.cs" />
+    <Compile Include="Enums\PaymentMethod.cs" />
+    <Compile Include="Enums\ReportType.cs" />
+    <Compile Include="IocConfig\AuthIocConfig.cs" />
+    <Compile Include="IocConfig\ControllerIocConfig.cs" />
+    <Compile Include="IocConfig\EFIocConfig.cs" />
+    <Compile Include="IPosHttpApplication.cs" />
+    <Compile Include="Migrations\Logic\Helper\IposRoleHelper.cs" />
+    <Compile Include="Messaging\EmailService.cs" />
+    <Compile Include="Messaging\IEmailService.cs" />
+    <Compile Include="Messaging\SmsService.cs" />
+    <Compile Include="Migrations\201602070949568_initialcreate.cs" />
+    <Compile Include="Migrations\201602070949568_initialcreate.Designer.cs">
+      <DependentUpon>201602070949568_initialcreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604081520537_Ipos entities.cs" />
+    <Compile Include="Migrations\201604081520537_Ipos entities.Designer.cs">
+      <DependentUpon>201604081520537_Ipos entities.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604131933050_Sp_GetSalesHistory.cs" />
+    <Compile Include="Migrations\201604131933050_Sp_GetSalesHistory.Designer.cs">
+      <DependentUpon>201604131933050_Sp_GetSalesHistory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604140529257_Sp_GetDashboardAggregateData.cs" />
+    <Compile Include="Migrations\201604140529257_Sp_GetDashboardAggregateData.Designer.cs">
+      <DependentUpon>201604140529257_Sp_GetDashboardAggregateData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604140536210_Sp_GetLastItemsBought.cs" />
+    <Compile Include="Migrations\201604140536210_Sp_GetLastItemsBought.Designer.cs">
+      <DependentUpon>201604140536210_Sp_GetLastItemsBought.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604140545353_Sp_GetDetailsOfOrder.cs" />
+    <Compile Include="Migrations\201604140545353_Sp_GetDetailsOfOrder.Designer.cs">
+      <DependentUpon>201604140545353_Sp_GetDetailsOfOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604151005553_Sp_GetRecentItemsBought.cs" />
+    <Compile Include="Migrations\201604151005553_Sp_GetRecentItemsBought.Designer.cs">
+      <DependentUpon>201604151005553_Sp_GetRecentItemsBought.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604181604336_Sp_GetOrderedProducts.cs" />
+    <Compile Include="Migrations\201604181604336_Sp_GetOrderedProducts.Designer.cs">
+      <DependentUpon>201604181604336_Sp_GetOrderedProducts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604202057577_membership_missing_tables_and_views.cs" />
+    <Compile Include="Migrations\201604202057577_membership_missing_tables_and_views.Designer.cs">
+      <DependentUpon>201604202057577_membership_missing_tables_and_views.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604202121569_aspnet_membership_Procedures.cs" />
+    <Compile Include="Migrations\201604202121569_aspnet_membership_Procedures.Designer.cs">
+      <DependentUpon>201604202121569_aspnet_membership_Procedures.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604221026224_Sp_SearchProducts.cs" />
+    <Compile Include="Migrations\201604221026224_Sp_SearchProducts.Designer.cs">
+      <DependentUpon>201604221026224_Sp_SearchProducts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604221708546_Sp_GetCategories.cs" />
+    <Compile Include="Migrations\201604221708546_Sp_GetCategories.Designer.cs">
+      <DependentUpon>201604221708546_Sp_GetCategories.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604261453159_Sp_GetWastedItems.cs" />
+    <Compile Include="Migrations\201604261453159_Sp_GetWastedItems.Designer.cs">
+      <DependentUpon>201604261453159_Sp_GetWastedItems.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604271600041_Sp_GetAuditLog.cs" />
+    <Compile Include="Migrations\201604271600041_Sp_GetAuditLog.Designer.cs">
+      <DependentUpon>201604271600041_Sp_GetAuditLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604281958258_Sp_SearchCategories.cs" />
+    <Compile Include="Migrations\201604281958258_Sp_SearchCategories.Designer.cs">
+      <DependentUpon>201604281958258_Sp_SearchCategories.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605031844177_Sp_GetCustomers.cs" />
+    <Compile Include="Migrations\201605031844177_Sp_GetCustomers.Designer.cs">
+      <DependentUpon>201605031844177_Sp_GetCustomers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605060837196_Sp_GetProductHistory.cs" />
+    <Compile Include="Migrations\201605060837196_Sp_GetProductHistory.Designer.cs">
+      <DependentUpon>201605060837196_Sp_GetProductHistory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605081136095_sp_GetFaultyProducts.cs" />
+    <Compile Include="Migrations\201605081136095_sp_GetFaultyProducts.Designer.cs">
+      <DependentUpon>201605081136095_sp_GetFaultyProducts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605091103523_Sp_GetRestockItems.cs" />
+    <Compile Include="Migrations\201605091103523_Sp_GetRestockItems.Designer.cs">
+      <DependentUpon>201605091103523_Sp_GetRestockItems.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605131816461_Sp_GetUsers.cs" />
+    <Compile Include="Migrations\201605131816461_Sp_GetUsers.Designer.cs">
+      <DependentUpon>201605131816461_Sp_GetUsers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605231622222_OrderDetails.cs" />
+    <Compile Include="Migrations\201605231622222_OrderDetails.Designer.cs">
+      <DependentUpon>201605231622222_OrderDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605231722243_Sp_IgnoreItem.cs" />
+    <Compile Include="Migrations\201605231722243_Sp_IgnoreItem.Designer.cs">
+      <DependentUpon>201605231722243_Sp_IgnoreItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605250654489_auto.cs" />
+    <Compile Include="Migrations\201605250654489_auto.Designer.cs">
+      <DependentUpon>201605250654489_auto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604081520538_IposV2 extraFields.cs" />
+    <Compile Include="Migrations\201604081520538_IposV2 extraFields.Designer.cs">
+      <DependentUpon>201604081520538_IposV2 extraFields.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201609220653436_Alter_Sp_GetSalesHistory.cs" />
+    <Compile Include="Migrations\201609220653436_Alter_Sp_GetSalesHistory.Designer.cs">
+      <DependentUpon>201609220653436_Alter_Sp_GetSalesHistory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201609221434335_Alter_Sp_SearchProducts.cs" />
+    <Compile Include="Migrations\201609221434335_Alter_Sp_SearchProducts.Designer.cs">
+      <DependentUpon>201609221434335_Alter_Sp_SearchProducts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201609230500263_Alter_Sp_GetOrderedProducts.cs" />
+    <Compile Include="Migrations\201609230500263_Alter_Sp_GetOrderedProducts.Designer.cs">
+      <DependentUpon>201609230500263_Alter_Sp_GetOrderedProducts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Migrations\DataHelper\UserDataHelper.cs" />
+    <Compile Include="Models\aspnet_Applications.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\aspnet_Membership.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\aspnet_Paths.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\aspnet_PersonalizationAllUsers.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\aspnet_PersonalizationPerUser.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\aspnet_Profile.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\aspnet_Roles.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\aspnet_SchemaVersions.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\aspnet_Users.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\aspnet_WebEvent_Events.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\Audit.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\BulkSM.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\Category.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\Customer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\HourlySalesOrder.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\Mapping\aspnet_ApplicationsMap.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\Mapping\aspnet_MembershipMap.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\Mapping\aspnet_PathsMap.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\Mapping\aspnet_PersonalizationAllUsersMap.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\Mapping\aspnet_PersonalizationPerUserMap.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\Mapping\aspnet_ProfileMap.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\Mapping\aspnet_RolesMap.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\Mapping\aspnet_SchemaVersionsMap.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\Mapping\aspnet_UsersMap.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\Mapping\aspnet_WebEvent_EventsMap.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\Mapping\AuditMap.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\Mapping\BulkSMMap.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\Mapping\CategoryMap.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\Mapping\CustomerMap.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\Mapping\HourlySalesOrderMap.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\Mapping\MonthlySalesOrderMap.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\Mapping\OrderDetailMap.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\Mapping\OrderMap.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\Mapping\ProductMap.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\Mapping\SpoilMap.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\Mapping\StaffWeeklySaleMap.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\Mapping\vw_aspnet_ApplicationsMap.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\Mapping\vw_aspnet_MembershipUsersMap.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\Mapping\vw_aspnet_ProfilesMap.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\Mapping\vw_aspnet_RolesMap.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\Mapping\vw_aspnet_UsersInRolesMap.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\Mapping\vw_aspnet_UsersMap.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\Mapping\vw_aspnet_WebPartState_PathsMap.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\Mapping\vw_aspnet_WebPartState_SharedMap.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\Mapping\vw_aspnet_WebPartState_UserMap.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\Mapping\WeeklySalesOrderMap.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\Mapping\YearlySalesOrderMap.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\MonthlySalesOrder.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\Order.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\OrderDetail.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\Product.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\Spoil.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\StaffWeeklySale.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\vw_aspnet_Applications.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\vw_aspnet_MembershipUsers.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\vw_aspnet_Profiles.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\vw_aspnet_Roles.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\vw_aspnet_Users.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\vw_aspnet_UsersInRoles.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\vw_aspnet_WebPartState_Paths.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\vw_aspnet_WebPartState_Shared.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\vw_aspnet_WebPartState_User.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\WeeklySalesOrder.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\YearlySalesOrder.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Settings\AppKeys.cs" />
+    <Compile Include="Settings\SiteConfig.cs" />
+    <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="Utilities\Extension.cs" />
+    <Compile Include="ViewModels\QuantityViewModel.cs" />
+    <Compile Include="Web\App_Start\BundleConfig.cs" />
+    <Compile Include="Web\App_Start\ErrorConfig.cs" />
+    <Compile Include="ViewModels\ApiRequestViewModel.cs" />
+    <Compile Include="ViewModels\ApiResultViewModel.cs" />
+    <Compile Include="ViewModels\AppUserViewModel.cs" />
+    <Compile Include="ViewModels\AuditViewModel.cs" />
+    <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Compile Include="ViewModels\CategoryViewModel.cs" />
+    <Compile Include="ViewModels\EmailMessageViewModel.cs" />
+    <Compile Include="ViewModels\LoginViewModel.cs" />
+    <Compile Include="ViewModels\OrderDetailViewModel.cs" />
+    <Compile Include="ViewModels\PostedTransactionViewModel.cs" />
+    <Compile Include="ViewModels\ProductViewModel.cs" />
+    <Compile Include="ViewModels\RecentItemDetailVm.cs" />
+    <Compile Include="ViewModels\ResetPasswordViewModel.cs" />
+    <Compile Include="ViewModels\SalesRecordViewModel.cs" />
+    <Compile Include="ViewModels\SmsRequestModel.cs" />
+    <Compile Include="ViewModels\SpoilViewModel.cs" />
+    <Compile Include="Web\App_Start\FilterConfig.cs" />
+    <Compile Include="Web\App_Start\RouteConfig.cs" />
+    <Compile Include="Web\App_Start\WebApiConfig.cs" />
+    <Compile Include="Web\Fiters\NoCacheAttribute.cs" />
+    <Compile Include="Web\Identity\IposUser.cs" />
+    <Compile Include="Web\Startup.Auth.cs" />
+    <Compile Include="Web\Startup.Composition.cs" />
+    <Compile Include="Web\Startup.cs" />
+    <Compile Include="Web\Startup.Mapper.cs" />
+    <Compile Include="Web\Startup.WebApi.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\SmartWr.Ipos.Core.Dtos.SalesRecordDto.datasource" />
+    <None Include="Properties\DataSources\SmartWr.Ipos.Core.ViewModels.ProductViewModel.datasource" />
+    <None Include="Properties\DataSources\SmartWr.Ipos.Core.ViewModels.SalesRecordViewModel.datasource" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\packages\Microsoft.SqlServer.Types.11.0.2\nativeBinaries\x64\msvcr100.dll">
+      <Link>SqlServerTypes\x64\msvcr100.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\packages\Microsoft.SqlServer.Types.11.0.2\nativeBinaries\x64\SqlServerSpatial110.dll">
+      <Link>SqlServerTypes\x64\SqlServerSpatial110.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\packages\Microsoft.SqlServer.Types.11.0.2\nativeBinaries\x86\msvcr100.dll">
+      <Link>SqlServerTypes\x86\msvcr100.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\packages\Microsoft.SqlServer.Types.11.0.2\nativeBinaries\x86\SqlServerSpatial110.dll">
+      <Link>SqlServerTypes\x86\SqlServerSpatial110.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="3rd Party Libs\SmartWr.WebFramework.Library.dll" />
+    <Content Include="SqlServerTypes\readme.htm" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201602070949568_initialcreate.resx">
+      <DependentUpon>201602070949568_initialcreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604081520537_Ipos entities.resx">
+      <DependentUpon>201604081520537_Ipos entities.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604131933050_Sp_GetSalesHistory.resx">
+      <DependentUpon>201604131933050_Sp_GetSalesHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604140529257_Sp_GetDashboardAggregateData.resx">
+      <DependentUpon>201604140529257_Sp_GetDashboardAggregateData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604140536210_Sp_GetLastItemsBought.resx">
+      <DependentUpon>201604140536210_Sp_GetLastItemsBought.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604140545353_Sp_GetDetailsOfOrder.resx">
+      <DependentUpon>201604140545353_Sp_GetDetailsOfOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604151005553_Sp_GetRecentItemsBought.resx">
+      <DependentUpon>201604151005553_Sp_GetRecentItemsBought.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604181604336_Sp_GetOrderedProducts.resx">
+      <DependentUpon>201604181604336_Sp_GetOrderedProducts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604202057577_membership_missing_tables_and_views.resx">
+      <DependentUpon>201604202057577_membership_missing_tables_and_views.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604202121569_aspnet_membership_Procedures.resx">
+      <DependentUpon>201604202121569_aspnet_membership_Procedures.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604221026224_Sp_SearchProducts.resx">
+      <DependentUpon>201604221026224_Sp_SearchProducts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604221708546_Sp_GetCategories.resx">
+      <DependentUpon>201604221708546_Sp_GetCategories.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604261453159_Sp_GetWastedItems.resx">
+      <DependentUpon>201604261453159_Sp_GetWastedItems.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604271600041_Sp_GetAuditLog.resx">
+      <DependentUpon>201604271600041_Sp_GetAuditLog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604281958258_Sp_SearchCategories.resx">
+      <DependentUpon>201604281958258_Sp_SearchCategories.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605031844177_Sp_GetCustomers.resx">
+      <DependentUpon>201605031844177_Sp_GetCustomers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605060837196_Sp_GetProductHistory.resx">
+      <DependentUpon>201605060837196_Sp_GetProductHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605081136095_sp_GetFaultyProducts.resx">
+      <DependentUpon>201605081136095_sp_GetFaultyProducts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605091103523_Sp_GetRestockItems.resx">
+      <DependentUpon>201605091103523_Sp_GetRestockItems.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605131816461_Sp_GetUsers.resx">
+      <DependentUpon>201605131816461_Sp_GetUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605231622222_OrderDetails.resx">
+      <DependentUpon>201605231622222_OrderDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605231722243_Sp_IgnoreItem.resx">
+      <DependentUpon>201605231722243_Sp_IgnoreItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605250654489_auto.resx">
+      <DependentUpon>201605250654489_auto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604081520538_IposV2 extraFields.resx">
+      <DependentUpon>201604081520538_IposV2 extraFields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609220653436_Alter_Sp_GetSalesHistory.resx">
+      <DependentUpon>201609220653436_Alter_Sp_GetSalesHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609221434335_Alter_Sp_SearchProducts.resx">
+      <DependentUpon>201609221434335_Alter_Sp_SearchProducts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609230500263_Alter_Sp_GetOrderedProducts.resx">
+      <DependentUpon>201609230500263_Alter_Sp_GetOrderedProducts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rdlc\Products.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rdlc\SalesReport.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

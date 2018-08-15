@@ -1,0 +1,102 @@
+﻿@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_AuthLayout.cshtml";
+}
+
+<style>
+    .col-md-6{
+        min-height:100vh;
+        width: 50%;
+        
+    }
+
+    /*.imgsize{
+        min-height:100vh!important;
+        height: 100vh!important;
+        margin-top:0px!important;
+    }*/
+</style>
+
+<div class="row bs-reset">
+    <div class="col-md-6 login-container bs-reset" ng-controller="loginCtrl">
+
+        <div class="login-content">
+
+            <h1><img class="login-logo login-5" src="~/Content/images/fav.png" /></h1>
+
+            <form id="loginForm" class="login-form" method="post" action="javascript:;"
+                  ng-submit="login($event, '@Url.Content("~/api/authapi/login")')">
+                <div class="alert alert-danger alert-dismissable show-login" ng-show="showAlertBox">
+                    <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+                    <span ng-bind="showErrorMsg"></span>
+                </div>
+                <div class="row">
+                    <div class="col-xs-6">
+                        <input type="text" placeholder="Login" class="form-control login-username" id="login-username" name="username" />
+                    </div>
+                    <div class="col-xs-6">
+                        <input type="password" placeholder="Password" class="form-control login-password" id="login-password" name="password" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <label class="checkbox">
+
+                            Remember me<input type="checkbox" class="rem-checkbox" />
+                        </label>
+                    </div>
+                    <div class="col-sm-6 text-right">
+                        @*<div class="forgot-password">
+                            <a href="~/auth/forgotpassword">Forgot Password?</a>
+                            <a href="~/auth/registeruser">Register Now</a>
+                        </div>*@
+                        <button class="btn blue" type="submit">Sign In</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="login-footer">
+            <div class="row bs-reset">
+                @*<div class="col-xs-4 bs-reset">
+                    <ul class="login-social">
+                        <li>
+                            <a href="javascript:;">
+                                <i class="icon-social-facebook"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">
+                                <i class="icon-social-twitter"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">
+                                <i class="icon-social-dribbble"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>*@
+                <div class="col-xs-12 bs-reset">
+                    <div class="login-copyright text-right">
+                        <p>Copyright &copy; Smartware Solutions @DateTime.Now.Year</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6 bs-reset">
+        @*<div class="login-bg" style="position: relative; z-index: 0; background: transparent none repeat scroll 0% 0%;"> <div class="backstretch" style="left: 0px; top: 0px; overflow: hidden; margin: 0px; padding: 0px; min-height:100vh; height: 960px; width: 960px; z-index: -999998; position: relative;"><img style="position: relative; margin: 0px; padding: 0px; border: medium none; min-height:100vh; width: 960px; height: 960px; max-height: none; max-width: none; z-index: -999999; left: 0px; top: 0px;"  class="" src="~/Content/assets/pages/img/login/bg3.jpg"></div></div>*@
+        @*<div class="login-bg" style="position: relative; z-index:0; background: transparent none repeat scroll 0% 0%;">
+            <div class="backstretch" style="left: 0px; top: 0px; overflow:hidden; margin:0px; padding: 0px; height: 462px; width:672px; z-index: -999998; position:absolute;">
+                <img style="position: absolute; margin:0px; padding:0px; border: medium none; width: 672px; height: 604.8px; max-height: none; max-width: none; z-index: -999999; left: 0px; top: -71.4px; " src="~/Content/images/LayoutImages/ipos-banner-9done.jpg" />
+                <img style="position: absolute; display: none; margin: 0px; padding: 0px; border: medium none; width: auto; height: auto; max-height: none; max-width: none; z-index: -999999;" src="~/Content/images/LayoutImages/ipos-banner-10.jpg" class="deleteable">
+                <img style="position: absolute; display: none; margin: 0px; padding: 0px; border: medium none; width: auto; height: auto; max-height: none; max-width: none; z-index: -999999;" src="~/Content/images/LayoutImages/ipos-banner-8done.jpg" class="deleteable">
+        </div>
+    </div>*@
+        <div class="login-bg"></div>
+</div>
+
+@section Scripts{
+<script src="~/App/auth/authctrl.js"></script>
+}

@@ -1,0 +1,140 @@
+﻿@{
+    Layout = null;
+}
+
+<style>
+    .block-ui-overlay {
+        background-color: rgba(98, 95, 95, 0.62);
+    }
+
+        .checkbox {
+        margin-bottom: 0px;
+        margin-top: 0px;
+        vertical-align: middle;
+        display: inline-block;
+        height: 17px;
+    }
+</style>
+
+<div class="col-lg-12">
+    <div class="card-box">
+
+        <div class="pull-right dropdown">
+            <button class="btn btn-default btn-sm dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                Actions
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                <li>
+                    <a href="javascript:void(0);" ng-click="vm.getpendingPost('@Url.Content("~/api/orderdetailapi/getpendingpost")')"><i class="ion-refresh"></i> Refresh</a>
+                </li>
+                <li ng-show="vm.checks.length > 0 ">
+                    <a href="javascript:void(0);" ng-click="vm.deleteMultiple('@Url.Content("~/api/orderdetailapi/deletepostitems")')"><i class="md md-close"></i> Delete select items</a>
+                </li>
+
+            </ul>
+        </div>
+
+        <h2 class="text-dark m-b-30 header-title">
+            <span><i class="fa-hourglass-end fa"></i> Pending Post Listing ({{vm.total}})</span>
+        </h2>
+
+        <div block-ui="transactionPendingBlockUI">
+            <div class="clearfix">
+                <div class="pull-left">
+
+                    <a href="javascript:void(0);" ng-show="vm.total > 0" class="btn btn-large btn-default btn-icon m-b-30 btn-md" data-target="#con-close-modal" data-toggle="modal">
+                        <i class="fa fa-cart-arrow-down"></i> <span>Tender post</span>
+                    </a>
+
+                </div>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table table-actions-bar table-hover table-striped" ng-init="vm.getpendingPost('@Url.Content("~/api/orderdetailapi/getpendingpost")')">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>
+                                <div class="checkbox checkbox-single">
+                                    <input data-ng-click="selectAll($event)"
+                                           data-ng-checked="isSelectedAll()"
+                                           type="checkbox">
+                                    <label></label>
+                                </div>
+                            </th>
+                            <th>Created Date</th>
+                            <th>Item Name</th>
+                            <th>Quantity</th>
+                            <th>Unit Price</th>
+                            <th>Remarks/ Description</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="p in vm.posts">
+                            <th scope="row" ng-bind="$index + 1"></th>
+                            <th>
+                                <div class="checkbox checkbox-single">
+                                    <input id="chkItem_{{p.id}}"
+                                           name="chkItem_{{p.id}}" ng-checked="isSelected(p.id)"
+                                           ng-click="updateSelection($event, p.id)" type="checkbox">
+                                    <label></label>
+                                </div>
+                            </th>
+                            <td>{{p.createdDate || 'NA' }}</td>
+                            <td>{{p.name || 'NA' }}</td>
+                            <td>{{p.quantity || 'NA' }}</td>
+                            <td>{{(p.unitPrice  | currency :'&#8358;') || 'NA' }}</td>
+                            <td>{{p.remarks || 'NA' }}</td>
+                            <td>
+                                <a data-toggle="tooltip" title="delete" href="javascript:void(0);"><span ng-click="vm.deleteSingle('@Url.Content("~/api/orderdetailapi/deletepostitems")' , $index)" class="label label-danger">Delete</span></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="con-close-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">IPos - Tender Post</h4>
+            </div>
+            <form ng-submit="vm.commitPendingPost($event,'@Url.Content("~/api/orderdetailapi/tendercurrentpost")')" name="postform">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <label for="field-1" class="control-label">Post Date</label>
+                                <input type="text" data-date-today-btn="linked" readonly class="form-control datepicker" data-date-autoclose="true" data-provide="datepicker" data-date-format="dd/mm/yyyy" id="postDate" ng-model="vm.postDate" ng-required="true" placeholder="post date">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group no-margin">
+                                <label for="field-7" class="control-label">Remarks</label>
+                                <textarea class="form-control autogrow" ng-model="vm.remarks" placeholder="remarks" style="overflow: hidden; word-wrap: break-word; resize: horizontal; height: 104px;"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+
+                    <button type="submit" ng-disabled="isDisabled" class="btn btn-success waves-effect waves-light"> <i class="fa  fa-cart-arrow-down m-r-5"></i> <span>Tender</span> </button>
+
+                    <button type="button" data-dismiss="modal" class="btn btn-danger waves-effect waves-light">
+                        <span class="btn-label">
+                            <i class="fa fa-times"></i>
+                        </span>Close
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

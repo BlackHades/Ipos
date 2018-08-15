@@ -1,0 +1,54 @@
+﻿@{
+    Layout = null;
+}
+
+<div class="col-sm-12">
+    <div class="card-box m-t-20">
+
+        <h2 class="text-dark header-title">
+            <span><i class="fa fa-envelope"></i> Compose Email</span>
+        </h2>
+
+        <div class="p-20">
+            <form role="form" ng-submit="vm.sendMail($event,'@Url.Content("~/api/toolsapi/sendemail")')">
+                <div class="form-group">
+                    @Html.DropDownList("receipients", ViewBag.users as IEnumerable<SelectListItem>, "Select or enter receipient email address", new { @class = "form-control", multiple = "" })
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-9">
+                        <div class="form-group">
+                            <input type="text" ng-model="vm.email.subject" class="form-control" required="" placeholder="Subject">
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="checkbox checkbox-primary">
+                            <input ng-model="vm.email.tocustomers" type="checkbox">
+                            <label for="checkbox2">
+                                Include customers
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <textarea class="form-control wysihtml5" id="message" rows="12"></textarea>
+                </div>
+
+                <div class="btn-toolbar form-group m-b-0">
+                    <div class="pull-right">
+                        <button type="submit" class="btn btn-purple waves-effect waves-light"> <span>Send</span> <i class="fa fa-send m-l-10"></i> </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    var $this = $(".wysihtml5");
+    $this.wysihtml5({
+        toolbar: {
+            fa: true
+        }
+    });
+</script>

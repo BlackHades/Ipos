@@ -1,0 +1,267 @@
+﻿<div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal5" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+                <h4 class="modal-title"><img src="~/content/images/fav.png" alt="logo" class="img-responsive" /></h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <h4>Recall Items</h4>
+
+                    <table class="table table-actions-bar m-b-0">
+                        <thead>
+                            <tr>
+                                <th><a href="#" ng-click="recallbtn()" class="btn">Recall</a></th>
+                                <th>Product Name:</th>
+                                <th>Sold by:</th>
+                                <th>Quantity:</th>
+                                <th>Price:</th>
+                                <th>Cost Price:</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="b in itemDetails">
+                                <td><input type="checkbox" ng-checked="updateSelection($index)" /></td>
+                                <td>
+                                    <span ng-bind="b.productName"></span>
+                                </td>
+                                <td>
+                                    <span ng-bind="b.staffname"></span>
+                                </td>
+                                <td>
+                                    <span ng-bind="b.quantity"></span>
+                                </td>
+                                <td>
+                                    <span>{{b.price | number: 2}}</span>
+                                </td>
+                                <td>
+                                    <span>{{b.costPrice | number: 2}}</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal4" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+                <h4 class="modal-title"><img src="~/Content/images/fav.png" alt="logo" class="img-responsive" /></h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <h1>Transaction Details</h1>
+
+                    <table class="table table-actions-bar m-b-0">
+                        <thead>
+                            <tr>
+                                <th>Product Name:</th>
+                                <th>Sold by:</th>
+                                <th>Quantity:</th>
+                                <th>Price:</th>
+                                @*<th>Cost Price:</th>*@
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="b in itemDetails">
+
+                                <td>
+                                    <span ng-bind="b.productName"></span>
+                                </td>
+                                <td>
+                                    <span ng-bind="b.staffname"></span>
+                                </td>
+                                <td>
+                                    <span ng-bind="b.quantity"></span>
+                                </td>
+                                <td>
+                                    <span>{{b.price | number: 2}}</span>
+                                </td>
+                                @*<td>
+                                        <span>{{b.costPrice | number: 2}}</span>
+                                    </td>*@
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-lg-6">
+    <div class="card-box">
+        <a href="~/transaction/main#!/transactions" class="pull-right btn btn-default btn-sm waves-effect waves-light">View All</a>
+        <h4 class="text-dark header-title m-t-0">Recent Orders</h4>
+        <p class="text-muted m-b-30 font-13">
+            Top 10 recently sold items
+        </p>
+
+        <div class="table-responsive" ng-init="getTopItemsBought('@Url.Content("~/api/IPosReportApi/GetDashboardTopSales")')">
+            <table class="table table-actions-bar m-b-0">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Items Count</th>
+                        <th>Price</th>
+                        <th>Sold By</th>
+                        <th>Date Sold</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="b in boughtItems">
+                        <td>
+                            <div class="dropdown">
+                                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                    Action
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                    <li>
+                                        <a href="javascript:void(0);" ng-click="getItemDetails('@Url.Content("~/api/IPosReportApi/GetDashBoardRecentDetailsItems?ordUid=")'+ b.orderUId)">View Details</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);" ng-click="getItemDetailsForRecall('@Url.Content("~/api/IPosReportApi/GetDashBoardRecentDetailsItems?ordUid=")'+ b.orderUId)">Recall</a>
+                                    </li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="javascript:void(0);">Delete</a></li>
+                                </ul>
+                            </div>
+                        </td>
+                        <td>
+                            <span ng-bind="b.itemCount"></span>
+                        </td>
+                        <td>
+                            <span>{{(b.totalSellingPrice | number: 2) || 'NA'}}</span>
+                        </td>
+                        <td>
+                            <span>{{formatUserName(b.staffName)}}</span>
+                        </td>
+                        <td>
+                            <span>{{fnConverDate(b.transDate)}}</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="col-lg-6">
+    <div class="card-box">
+        <a href="~/tools/main#!/wasteditems" class="pull-right btn btn-default btn-sm waves-effect waves-light">View All</a>
+        <h4 class="text-dark header-title m-t-0">Faulty Items</h4>
+        <p class="text-muted m-b-30 font-13">
+            Top 10 recently reported faulty items
+        </p>
+
+        <div class="table-responsive" ng-init="getTopFaultyItems('@Url.Content("~/api/iposreportapi/getdashboardfaultyproducts")')">
+            <table class="table table-actions-bar m-b-0">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Item Name</th>
+                        <th>Quantity</th>
+                        <th>Entry Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="b in faultyItems">
+                        <td>
+                            <div class="dropdown">
+                                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                    Action
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                    <li>
+                                        <a href="javascript:void(0);" ui-sref="boughtFaultyItemsdetails({itemid: b.spoilId})">View Details</a>
+                                    </li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="javascript:void(0);">Delete</a></li>
+                                </ul>
+                            </div>
+                        </td>
+                        <td>
+                            <span ng-bind="b.name"></span>
+                        </td>
+                        <td>
+                            <span ng-bind="b.quantity"></span>
+                        </td>
+
+                        <td>
+                            <span>{{fnConverDate(b.entDate)}}</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="col-lg-12">
+    <div class="card-box">
+        <a href="~/stock/main" class="pull-right btn btn-default btn-sm waves-effect waves-light">View All</a>
+        <h4 class="text-dark header-title m-t-0">Re-Stock Items</h4>
+        <p class="text-muted m-b-30 font-13">
+            Top 10 Items nearing re-order level
+        </p>
+
+        <div class="table-responsive" ng-init="getRestockItems('@Url.Content("~/api/iposReportapi/getdashboardrestockitems")')">
+            <table class="table table-actions-bar m-b-0">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Product Name</th>
+                        <th>Description</th>
+                        <th>Quantity</th>
+                        <th>Reorder Level</th>
+                        <th>Date Entered</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="b in restockItems">
+                        <td>
+                            <div class="dropdown">
+                                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                    Action
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                    <li>
+
+                                        <a href="javascript:void(0);" ng-click="ignoreVal('@Url.Content("~/api/IPosReportApi/GetDashBoardIgnoreItem?prdUid=")'+ b.productId)">Ignore</a>
+                                    </li>
+                                    <li role="separator" class="divider"></li>
+
+                                    <!--Redirect to stock edit because George code was not working-->
+                                    <!--Todo: Fix this with the provided modal-->
+                                    <li><a @*href="#myModal3"*@ ng-href="@Url.Content("~/stock/main#!/editstock/"){{b.productUId}}" @*data-toggle="modal"*@>Re-stock</a></li>
+                                </ul>
+                            </div>
+                        </td>
+                        <td>
+                            <span ng-bind="b.name"></span>
+                        </td>
+                        <td>
+                            <span ng-bind="b.description"></span>
+                        </td>
+                        <td>
+                            <span ng-bind="b.quantity"></span>
+                        </td>
+                        <td>
+                            <span ng-bind="b.reorderLevel"></span>
+                        </td>
+                        <td>
+                            <span>{{fnConverDate(b.entDate)}}</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
