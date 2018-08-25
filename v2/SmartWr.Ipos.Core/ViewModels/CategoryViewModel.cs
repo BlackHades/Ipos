@@ -1,6 +1,6 @@
 ﻿namespace SmartWr.Ipos.Core.ViewModels
 {
-   public class CategoryViewModel
+    public class CategoryViewModel
     {
         public int CategoryUId { get; set; }
         public string Name { get; set; }
@@ -10,5 +10,7 @@
         public int Id { get; set; }
 
         public int ProductCount { get; set; }
+
+        public int? ParentCatId { get; set; }
     }
 }

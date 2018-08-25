@@ -7,10 +7,9 @@
         border-color: red;
     }
 
-     .block-ui-overlay {
+    .block-ui-overlay {
         background-color: rgba(98, 95, 95, 0.62);
     }
-
 </style>
 
 <div class="col-lg-12">
@@ -35,18 +34,26 @@
                       ng-submit="createcategory($event, '@Url.Content("~/api/categoryapi/createitemcategory")')">
                     <div class="row m-b-30">
                         <div class="col-md-8">
+
                             <div class="form-group">
-                                <label class="col-md-3 control-label" for="categoryName">Name</label>
+                                <label class="col-md-3 control-label" for="category">Category</label>
+                                <div class="col-md-9">
+                                    @Html.DropDownList("ParentCatId", ViewBag.Category as IEnumerable<SelectListItem>, "SELECT A CATEGORY", new { @class = "form-control" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-3 control-label" for="SubcategoryName">Sub-Category</label>
 
                                 <div class="col-md-9">
-                                    <input type="text" @*remote="@Url.Content("~/api/categoryapi/checkexistingcategory")"*@ id="productName" class="form-control" placeholder="Enter the category name" required="" name="name">
+                                    <input type="text" @*remote="@Url.Content("~/api/categoryapi/checkexistingcategory")"*@ id="productName" class="form-control" placeholder="Enter the sub category name" required="" name="name">
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="description">Description</label>
                                 <div class="col-md-9">
-                                    <textarea id="description" class="form-control" rows="3" name="description" > </textarea>
+                                    <textarea id="description" class="form-control" rows="3" name="description"> </textarea>
                                 </div>
                             </div>
                         </div>
@@ -76,7 +83,7 @@
             messages: {
                 name: {
                     required: "Name field is required.",
-                    url:"Category already exists on the system"
+                    url: "Category already exists on the system"
                 }
             }
         });

@@ -11,6 +11,7 @@ namespace SmartWr.Ipos.Core.Dtos
         public int ProductCount { get; set; }
         public string Name { get; set; }
         public int? TotalCount { get; set; }
+        public int? ParentCatId { get; set; }   
         public override List<ValidationError> Validate()
         {
             throw new NotImplementedException();
