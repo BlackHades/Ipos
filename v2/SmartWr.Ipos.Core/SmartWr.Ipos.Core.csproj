@@ -271,6 +271,10 @@
     <Compile Include="IocConfig\ControllerIocConfig.cs" />
     <Compile Include="IocConfig\EFIocConfig.cs" />
     <Compile Include="IPosHttpApplication.cs" />
+    <Compile Include="Migrations\201808231413486_AddedSubCategoryFields.cs" />
+    <Compile Include="Migrations\201808231413486_AddedSubCategoryFields.Designer.cs">
+      <DependentUpon>201808231413486_AddedSubCategoryFields.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Logic\Helper\IposRoleHelper.cs" />
     <Compile Include="Messaging\EmailService.cs" />
     <Compile Include="Messaging\IEmailService.cs" />
@@ -723,6 +727,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201609230500263_Alter_Sp_GetOrderedProducts.resx">
       <DependentUpon>201609230500263_Alter_Sp_GetOrderedProducts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808231413486_AddedSubCategoryFields.resx">
+      <DependentUpon>201808231413486_AddedSubCategoryFields.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Rdlc\Products.rdlc">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

@@ -1,11 +1,10 @@
-﻿using System.Web.Mvc;
+﻿using Nop.Core.Caching;
 using SmartWr.Ipos.Core.Context.Services;
-using System.Threading.Tasks;
-using Nop.Core.Caching;
+using SmartWr.Ipos.Core.Settings;
 using SmartWr.WebFramework.Library.Infrastructure.IoCs;
 using System.Collections.Generic;
-using SmartWr.Ipos.Core.Settings;
 using System.Linq;
+using System.Web.Mvc;
 
 namespace SmartWr.Ipos.Core.Controllers.MvcControllers
 {
@@ -25,6 +24,7 @@ namespace SmartWr.Ipos.Core.Controllers.MvcControllers
         [HttpGet]
         public ActionResult CategoryCreate()
         {
+            PrefillCategories();
             return View();
         }
 
@@ -67,6 +67,12 @@ namespace SmartWr.Ipos.Core.Controllers.MvcControllers
 
             return Json(categories, JsonRequestBehavior.AllowGet);
         }
+
+        private void PrefillCategories()
+        {
+            ViewBag.Category = new SelectList(_catSvc.GetCategories(), "CategoryUId", "Name");
+        }
+
 
     }
 }

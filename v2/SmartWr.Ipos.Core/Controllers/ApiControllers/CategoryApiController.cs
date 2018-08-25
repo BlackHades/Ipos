@@ -8,7 +8,6 @@ using SmartWr.Ipos.Core.Enums;
 using SmartWr.Ipos.Core.Models;
 using SmartWr.Ipos.Core.Settings;
 using SmartWr.Ipos.Core.ViewModels;
-using SmartWr.WebFramework.Library.Infrastructure.IoCs;
 using SmartWr.WebFramework.Library.Infrastructure.Logging;
 using System;
 using System.Collections.Generic;
@@ -47,11 +46,12 @@ namespace SmartWr.Ipos.Core.Controllers.ApiControllers
                 var identityUserId = User.Identity.GetUserId<int>();
 
                 var newCategoryItem = new Category()
-                    {
-                        Name = catVm.Name.Trim(),
-                        Description = catVm.Description,
-                        CreatedBy_Id = identityUserId,
-                    };
+                {
+                    Name = catVm.Name.Trim(),
+                    Description = catVm.Description,
+                    CreatedBy_Id = identityUserId,
+                    ParentCatId = catVm.ParentCatId
+                };
 
                 _catSvc.NewCategory(newCategoryItem);
 
@@ -88,7 +88,7 @@ namespace SmartWr.Ipos.Core.Controllers.ApiControllers
 
         [HttpPost, Route("GetSearchedCategory")]
         public HttpResponseMessage SearchItemCategory(ApiRequestViewModel vm)
-        {
+         {
             ApiResultViewModel<List<CategoryViewModel>> response = new ApiResultViewModel<List<CategoryViewModel>>();
             try
             {
@@ -134,12 +134,12 @@ namespace SmartWr.Ipos.Core.Controllers.ApiControllers
             try
             {
                 var catego = new CategoryViewModel()
-                  {
-                      CategoryUId = dbCategory.CategoryUId,
-                      Name = dbCategory.Name,
-                      Description = dbCategory.Description,
-                      Id = dbCategory.Id,
-                  };
+                {
+                    CategoryUId = dbCategory.CategoryUId,
+                    Name = dbCategory.Name,
+                    Description = dbCategory.Description,
+                    Id = dbCategory.Id,
+                };
 
                 response.result = catego;
             }
@@ -259,7 +259,7 @@ namespace SmartWr.Ipos.Core.Controllers.ApiControllers
                 _cacheManager.Set(Key, existingCategories, AppKeys.DefaultCacheTime);
             }
 
-            return !existingCategories.Any(p=>p.Equals(name.Trim()));
+            return !existingCategories.Any(p => p.Equals(name.Trim()));
         }
     }
 }

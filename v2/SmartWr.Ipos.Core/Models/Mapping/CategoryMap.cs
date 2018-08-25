@@ -40,6 +40,11 @@ namespace SmartWr.Ipos.Core.Models.Mapping
                .WithMany()
                .HasForeignKey(p => p.CreatedBy_Id).WillCascadeOnDelete(false);
 
+            this.HasOptional(t => t.ParentCategory)
+                .WithMany(t => t.SubCategories)
+                .HasForeignKey(t => t.ParentCatId)
+                .WillCascadeOnDelete(false);
+
             Ignore(p => p.Id);
             Ignore(p => p.CreatedOnUtc);
         }
