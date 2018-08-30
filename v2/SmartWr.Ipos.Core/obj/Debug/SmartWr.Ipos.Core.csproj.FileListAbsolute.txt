@@ -206,8 +206,6 @@ D:\WorkSpace\Web\Smartware Interactive POS 2\v2\SmartWr.Ipos.Core\obj\Debug\Smar
 D:\WorkSpace\Web\Smartware Interactive POS 2\v2\SmartWr.Ipos.Core\obj\Debug\SmartWr.Ipos.Core.Migrations.Alter_Sp_SearchProducts.resources
 D:\WorkSpace\Web\Smartware Interactive POS 2\v2\SmartWr.Ipos.Core\obj\Debug\SmartWr.Ipos.Core.Migrations.Alter_Sp_GetOrderedProducts.resources
 D:\WorkSpace\Web\Smartware Interactive POS 2\v2\SmartWr.Ipos.Core\obj\Debug\SmartWr.Ipos.Core.csproj.GenerateResource.Cache
-D:\WorkSpace\Web\Smartware Interactive POS 2\v2\SmartWr.Ipos.Core\obj\Debug\RdlCompile.cache
-D:\WorkSpace\Web\Smartware Interactive POS 2\v2\SmartWr.Ipos.Core\obj\Debug\RdlCompile.compiled
 D:\WorkSpace\Web\Smartware Interactive POS 2\v2\SmartWr.Ipos.Core\obj\Debug\SmartWr.Ipos.Core.dll
 D:\WorkSpace\Web\Smartware Interactive POS 2\v2\SmartWr.Ipos.Core\obj\Debug\SmartWr.Ipos.Core.pdb
 C:\Users\Hcode\Desktop\Pos\Ipos\v2\SmartWr.Ipos.Core\bin\Debug\Rdlc\Products.rdlc
@@ -317,3 +315,5 @@ C:\Users\Hcode\Desktop\Pos\Ipos\v2\SmartWr.Ipos.Core\obj\Debug\SmartWr.Ipos.Core
 C:\Users\Hcode\Desktop\Pos\Ipos\v2\SmartWr.Ipos.Core\obj\Debug\SmartWr.Ipos.Core.dll
 C:\Users\Hcode\Desktop\Pos\Ipos\v2\SmartWr.Ipos.Core\obj\Debug\SmartWr.Ipos.Core.pdb
 C:\Users\Hcode\Desktop\Pos\Ipos\v2\SmartWr.Ipos.Core\obj\Debug\SmartWr.Ipos.Core.Migrations.AddedSubCategoryFields.resources
+D:\WorkSpace\Web\Smartware Interactive POS 2\v2\SmartWr.Ipos.Core\obj\Debug\SmartWr.Ipos.Core.Migrations.AddedSubCategoryFields.resources
+D:\WorkSpace\Web\Smartware Interactive POS 2\v2\SmartWr.Ipos.Core\obj\Debug\SmartWr.Ipos.Core.csproj.CoreCompileInputs.cache

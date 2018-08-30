@@ -35,18 +35,19 @@
                     <div class="row m-b-30">
                         <div class="col-md-8">
 
+           
                             <div class="form-group">
-                                <label class="col-md-3 control-label" for="category">Category</label>
+                                <label class="col-md-3 control-label" for="SubcategoryName">Category Name:</label>
+
                                 <div class="col-md-9">
-                                    @Html.DropDownList("ParentCatId", ViewBag.Category as IEnumerable<SelectListItem>, "SELECT A CATEGORY", new { @class = "form-control" })
+                                    <input type="text" @*remote="@Url.Content("~/api/categoryapi/checkexistingcategory")"*@ id="categoryName" class="form-control" placeholder="Enter the category name" required name="name">
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label class="col-md-3 control-label" for="SubcategoryName">Sub-Category</label>
-
+                                <label class="col-md-3 control-label" for="category">Parent Category:</label>
                                 <div class="col-md-9">
-                                    <input type="text" @*remote="@Url.Content("~/api/categoryapi/checkexistingcategory")"*@ id="productName" class="form-control" placeholder="Enter the sub category name" required="" name="name">
+                                    @Html.DropDownList("ParentCatId", ViewBag.Category as IEnumerable<SelectListItem>, "SELECT PARENT CATEGORY", new { @class = "form-control" })
                                 </div>
                             </div>
 

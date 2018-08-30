@@ -237,3 +237,5 @@ C:\Users\Hcode\Desktop\Pos\Ipos\v2\SmartWr.Ipos.Web\obj\Debug\SmartWr.Ipos.Web.c
 C:\Users\Hcode\Desktop\Pos\Ipos\v2\SmartWr.Ipos.Web\obj\Debug\SmartWr.Ipos.Web.csproj.CopyComplete
 C:\Users\Hcode\Desktop\Pos\Ipos\v2\SmartWr.Ipos.Web\obj\Debug\SmartWr.Ipos.Web.dll
 C:\Users\Hcode\Desktop\Pos\Ipos\v2\SmartWr.Ipos.Web\obj\Debug\SmartWr.Ipos.Web.pdb
+D:\WorkSpace\Web\Smartware Interactive POS 2\v2\SmartWr.Ipos.Web\bin\SmartWr.Ipos.Core.dll.config
+D:\WorkSpace\Web\Smartware Interactive POS 2\v2\SmartWr.Ipos.Web\obj\Debug\SmartWr.Ipos.Web.csproj.CoreCompileInputs.cache
